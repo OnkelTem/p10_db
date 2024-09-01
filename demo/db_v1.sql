@@ -1,0 +1,26 @@
+PRAGMA locking_mode = EXCLUSIVE;
+
+BEGIN EXCLUSIVE;
+
+DROP TABLE IF EXISTS ver;
+
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE
+  IF NOT EXISTS ver (ver INTEGER NOT NULL);
+
+INSERT INTO
+  ver
+VALUES
+  (1);
+
+CREATE TABLE
+  IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT);
+
+INSERT INTO
+  user (name)
+VALUES
+  ('alice'),
+  ('bob');
+
+COMMIT;
